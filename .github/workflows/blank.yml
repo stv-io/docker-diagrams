@@ -38,7 +38,7 @@ jobs:
       - name: GitHub Docker Action
         uses: matootie/github-docker@v3.0.0        
         with:
-          accessToken: ${{ github.DOCKER_TOKEN }}        
+          accessToken: ${{ github.token }}        
           tag: latest
 
       - name: Print Image URL
