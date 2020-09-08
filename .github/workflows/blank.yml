@@ -12,15 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
 
-      - name: Build and push Docker images
+      - name: Build docker image
         uses: docker/build-push-action@v1.1.0
 
-      - name: GitHub Docker Action
+      - name: Publish Docker Image to Github packages
         uses: matootie/github-docker@v3.0.0        
         with:
           accessToken: ${{ github.token }}
