@@ -17,7 +17,15 @@ jobs:
         uses: docker/build-push-action@v1.1.0
 
       - name: Publish Docker Image to Github packages
-        uses: matootie/github-docker@v3.0.0        
+        uses: matootie/github-docker@v3.0.0
+        id: publish
         with:
           accessToken: ${{ github.token }}
-          imageName: docker.pkg.github.com/sacasumo/docker-diagrams:v0.1
+          imageName: docker.pkg.github.com/sacasumo/docker-diagrams 
+          tag: |
+            latest
+            ${{ github.sha }}
+            v0.1
+
+      - name: Print Image URL
+        run: echo ${{ stets.publish.outputs.imageURL }}:${{ github.sha }}
