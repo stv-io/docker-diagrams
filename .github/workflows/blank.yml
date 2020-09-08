@@ -34,3 +34,14 @@ jobs:
 
       - name: Build and push Docker images
         uses: docker/build-push-action@v1.1.0
+
+      - name: GitHub Docker Action
+        uses: matootie/github-docker@v3.0.0        
+        with:
+          accessToken: ${{ github.DOCKER_TOKEN }}        
+          tag: latest
+
+      - name: Print Image URL
+        run: echo ${{ steps.publish.outputs.imageURL }}              
+        # $ docker build -t docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME:VERSION PATH
+
