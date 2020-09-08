@@ -28,4 +28,4 @@ jobs:
             v0.1
 
       - name: Print Image URL
-        run: echo ${{ stets.publish.outputs.imageURL }}:${{ github.sha }}
+        run: echo ${{ steps.publish.outputs.imageURL }}:${{ github.sha }}
