@@ -21,7 +21,7 @@ jobs:
         id: publish
         with:
           accessToken: ${{ github.token }}
-          imageName: docker.pkg.github.com/sacasumo/docker-diagrams 
+          imageName: docker-diagrams 
           tag: |
             latest
             ${{ github.sha }}
