@@ -6,4 +6,5 @@ RUN apk add --update --no-cache \
 
 RUN pip3 install diagrams==0.17.0
 
+WORKDIR /out
 ENTRYPOINT ["python"]
