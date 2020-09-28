@@ -2,7 +2,7 @@
 
 "Forked" from https://github.com/gtramontina/docker-diagrams
 
-#### _Authentication docker daemon with Github packages dockerregistry:_
+#### _Authenticate docker client with Github packages docker registry:_
 
 Reference - https://docs.github.com/en/free-pro-team@latest/packages/using-github-packages-with-your-projects-ecosystem/configuring-docker-for-use-with-github-packages
 
