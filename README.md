@@ -16,7 +16,7 @@ before you pull, login to the registry:
 #### _Running:_
 
 ```sh
-$ cat <diagram-file>.py | docker run -i --rm -v $(pwd)/out:/out docker.pkg.github.com/sacasumo/docker-diagrams/docker-diagrams:v0.1
+$ cat <diagram-file>.py | docker run -i --rm -v $(pwd)/out:/out docker.pkg.github.com/sacasumo/docker-diagrams/docker-diagrams:v0.17.0
 ```
 
 The `/out` directory is where `diagram` will generate your PNGs.
