@@ -8,15 +8,14 @@ Reference - https://docs.github.com/en/free-pro-team@latest/packages/using-githu
 
 Create a personal access token, with `read:packages` permissions. Drop it somewhere on your machine, such as `~/.github/docker-token`
 
-
 before you pull, login to the registry:
 
 ```cat ~/.github/docker-token | docker login https://docker.pkg.github.com -u <username> --password-stdin```
 
 #### _Running:_
 
-```sh
-$ cat <diagram-file>.py | docker run -i --rm -v $(pwd)/out:/out docker.pkg.github.com/sacasumo/docker-diagrams/docker-diagrams:v0.17.0
+```
+$ cat example.py | docker run -i --rm -v $(pwd)/out:/out docker.pkg.github.com/stv-io/docker-diagrams/docker-diagrams:v0.20.0
 ```
 
 The `/out` directory is where `diagram` will generate your PNGs.
