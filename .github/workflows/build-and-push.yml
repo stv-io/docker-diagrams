@@ -22,9 +22,8 @@ jobs:
           accessToken: ${{ github.token }}
           imageName: docker-diagrams 
           tag: |
-            latest
             ${{ github.sha }}
-            v0.20.0
+            v0.21.1
 
       - name: Print Image URL
         run: echo ${{ steps.publish.outputs.imageURL }}:${{ github.sha }}
