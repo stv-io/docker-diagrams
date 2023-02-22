@@ -1,10 +1,10 @@
-FROM python:3.10.5-alpine3.16
+FROM python:3.10.10-alpine3.17
 RUN apk add --update --no-cache \
   curl\
+  build-base\
   graphviz\
-  ttf-freefont
-
-RUN pip3 install diagrams==0.21.1
+  ttf-freefont\ 
+  && pip install --no-cache-dir diagrams==0.23.3
 
 WORKDIR /out
 ENTRYPOINT ["python"]
