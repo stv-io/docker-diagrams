@@ -40,21 +40,18 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push
-        uses: docker/build-push-action@v3.0.0
+        uses: docker/build-push-action@v4.0.0
         with:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
 
-      - name: Build docker image
-        uses: docker/build-push-action@v4.0.0
-
   test:
     needs: build
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/stv-io/docker-diagrams/docker-diagrams:${{ github.event.pull_request.head.sha }}
+      image: ghcr.io/stv-io/docker-diagrams${{ github.event.pull_request.head.sha }}
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.github_token }}
