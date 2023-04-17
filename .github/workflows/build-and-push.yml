@@ -51,7 +51,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/stv-io/docker-diagrams${{ github.event.pull_request.head.sha }}
+      image: ghcr.io/stv-io/docker-diagrams/${{ github.event.pull_request.head.sha }}
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.github_token }}
