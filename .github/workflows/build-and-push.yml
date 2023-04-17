@@ -23,7 +23,8 @@ jobs:
           images: |
             ghcr.io/stv-io/docker-diagrams
           tags: |
-            type=sha
+            # type=sha
+            type=raw,value=${{ github.event.pull_request.head.sha }}
             type=raw,value=v0.23.3
 
       - name: Set up QEMU
@@ -51,7 +52,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/stv-io/docker-diagrams/${{ github.event.pull_request.head.sha }}
+      image: ghcr.io/stv-io/docker-diagrams:${{ github.event.pull_request.head.sha }}
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.github_token }}
