@@ -4,7 +4,7 @@ RUN apk add --update --no-cache \
   build-base\
   graphviz\
   ttf-freefont\
-  && pip install --no-cache-dir diagrams==0.24.2
+  && pip install --no-cache-dir diagrams==0.24.1
 
 WORKDIR /out
 ENTRYPOINT ["python"]
