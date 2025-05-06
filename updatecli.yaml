@@ -1,5 +1,11 @@
 name: Update diagrams version
 
+autodiscovery:
+  scmid: default
+  crawlers:
+    dockerfile:
+    github/action:
+
 scms:
   default:
     kind: github
