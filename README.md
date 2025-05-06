@@ -5,7 +5,7 @@ A docker image for [diagrams](https://diagrams.mingrammer.com/). This is especia
 ## Running
 
 ```bash
-$ cat example.py | docker run -i --rm -v $(pwd)/out:/out ghcr.io/stv-io/docker-diagrams:v0.24.4
+$ cat example.py | docker run -i --rm -v $(pwd)/out:/out ghcr.io/stv-io/docker-diagrams:v0.24.1
 ```
 
 The `/out` directory is where `diagram` will generate your PNGs.
