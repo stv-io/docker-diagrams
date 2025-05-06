@@ -21,7 +21,7 @@ jobs:
           tags: |
             # type=sha
             type=raw,value=${{ github.event.pull_request.head.sha }}
-            type=raw,value=v0.24.1
+            type=raw,value=v${{ steps.get_version.outputs.version }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3.6.0
       - name: Set up Docker Buildx
@@ -32,13 +32,26 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract version
+        id: get_version
+        run: echo "version=$(cat version.txt)" >> $GITHUB_OUTPUT
+      - name: Update README.md with version
+        run: |
+          sed -i "s|ghcr.io/stv-io/docker-diagrams:\(v[0-9]*\.[0-9]*\.[0-9]*\|latest\)|ghcr.io/stv-io/docker-diagrams:v${{ steps.get_version.outputs.version }}|" README.md
+      - name: Push updated README.md
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update README.md with version ${{ steps.get_version.outputs.version }}"
       - name: Build and push
-        uses: docker/build-push-action@v6.16.0
+        uses: docker/build-push-action@v5
         with:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            DIAGRAMS_VERSION=${{ steps.get_version.outputs.version }}
   test:
     needs: build
     runs-on: ubuntu-latest

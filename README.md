@@ -10,12 +10,12 @@ Create a personal access token, with `read:packages` permissions. Drop it somewh
 
 before you pull, login to the registry:
 
-```cat ~/.github/docker-token | docker login https://docker.pkg.github.com -u <username> --password-stdin```
+```cat ~/.github/docker-token | docker login https://ghcr.io -u <username> --password-stdin```
 
 #### _Running:_
 
 ```
-$ cat example.py | docker run -i --rm -v $(pwd)/out:/out docker.pkg.github.com/stv-io/docker-diagrams/docker-diagrams:v0.20.0
+$ cat example.py | docker run -i --rm -v $(pwd)/out:/out ghcr.io/stv-io/docker-diagrams/docker-diagrams:latest
 ```
 
 The `/out` directory is where `diagram` will generate your PNGs.
