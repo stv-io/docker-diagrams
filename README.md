@@ -15,7 +15,7 @@ before you pull, login to the registry:
 #### _Running:_
 
 ```
-$ cat example.py | docker run -i --rm -v $(pwd)/out:/out ghcr.io/stv-io/docker-diagrams:v1.1.1
+$ cat example.py | docker run -i --rm -v $(pwd)/out:/out ghcr.io/stv-io/docker-diagrams:v0.24.4
 ```
 
 The `/out` directory is where `diagram` will generate your PNGs.
