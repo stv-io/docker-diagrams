@@ -54,7 +54,7 @@ jobs:
         run: |
           sed -i 's|ghcr.io/stv-io/docker-diagrams:v[0-9]\+\.[0-9]\+\.[0-9]\+|ghcr.io/stv-io/docker-diagrams:v${{ steps.get_version.outputs.version }}|' README.md
       - name: Push updated README.md
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6.0.1
         with:
           commit_message: "Update README.md with version ${{ steps.get_version.outputs.version }}"
           branch: update
