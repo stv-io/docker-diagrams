@@ -4,11 +4,9 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
-
 permissions:
   packages: write
   contents: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,7 +37,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Push updated README.md
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6.0.1
         with:
           commit_message: "Update README.md with version ${{ steps.get_version.outputs.version }}"
       - name: Build and push
@@ -60,7 +58,6 @@ jobs:
         with:
           commit_message: "Update README.md with version ${{ steps.get_version.outputs.version }}"
           branch: update
-
   test:
     needs: build
     runs-on: ubuntu-latest
