@@ -37,6 +37,16 @@ targets:
       replacepattern: '{{ source "diagrams" }}'
       forcecreate: true
 
+  readme:
+    name: Update README.md with new diagrams version
+    kind: file
+    sourceid: diagrams
+    scmid: default
+    spec:
+      file: README.md
+      matchpattern: ghcr.io/stv-io/docker-diagrams:v.*
+      replacepattern: 'ghcr.io/stv-io/docker-diagrams:{{ source "diagrams" }}'
+
 actions:
   default:
     kind: github/pullrequest
