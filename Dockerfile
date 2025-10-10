@@ -1,4 +1,4 @@
-FROM python:3.13.7-alpine3.21@sha256:0c3d4f28025c9adc2c03326aa160dde8f53faaa8684134a0e146e4edca28a946
+FROM python:3.14.0-alpine3.21@sha256:814983b0c51602a3fecc22afaff2321f79b547230020e1428e2d778367e2ffed
 ARG DIAGRAMS_VERSION
 RUN apk add --update --no-cache \
   curl\
