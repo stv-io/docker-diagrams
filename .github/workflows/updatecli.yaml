@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Install Updatecli in the runner
-        uses: updatecli/updatecli-action@v3.8.0
+        uses: updatecli/updatecli-action@2efa15cbae1751f532f9bfc88f56adafd6d1faed # v3.8.0
       - name: Run Updatecli in Dry Run mode
         run: updatecli diff --config updatecli.yaml
         env:
