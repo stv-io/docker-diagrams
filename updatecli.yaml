@@ -24,6 +24,9 @@ sources:
       owner: mingrammer
       repository: diagrams
       token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+    transformers:
+      # Upstream tags are "v0.25.1"; version.txt holds the bare version
+      - trimprefix: "v"
 
 targets:
   version.txt:
@@ -32,9 +35,8 @@ targets:
     sourceid: diagrams
     scmid: default
     spec:
+      # No matchpattern: the whole file is replaced with the source value
       file: version.txt
-      matchpattern: .*
-      replacepattern: '{{ source "diagrams" }}'
       forcecreate: true
 
   readme:
@@ -44,8 +46,8 @@ targets:
     scmid: default
     spec:
       file: README.md
-      matchpattern: ghcr.io/stv-io/docker-diagrams:v.*
-      replacepattern: 'ghcr.io/stv-io/docker-diagrams:{{ source "diagrams" }}'
+      matchpattern: 'ghcr.io/stv-io/docker-diagrams:v[0-9][0-9.]*'
+      replacepattern: 'ghcr.io/stv-io/docker-diagrams:v{{ source "diagrams" }}'
 
 actions:
   default:

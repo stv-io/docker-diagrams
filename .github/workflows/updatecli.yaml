@@ -14,14 +14,16 @@ jobs:
       GITHUB_USERNAME: "updatecli-bot"
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v7.0.1
       - name: Install Updatecli in the runner
-        uses: updatecli/updatecli-action@v2
+        uses: updatecli/updatecli-action@v3.8.0
       - name: Run Updatecli in Dry Run mode
         run: updatecli diff --config updatecli.yaml
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # PAT: GITHUB_TOKEN cannot push workflow-file changes, and PRs it opens do not trigger CI
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
       - name: Run Updatecli in Apply mode
         run: updatecli apply --config updatecli.yaml
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # PAT: GITHUB_TOKEN cannot push workflow-file changes, and PRs it opens do not trigger CI
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
