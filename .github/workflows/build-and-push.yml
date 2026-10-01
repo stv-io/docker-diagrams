@@ -4,21 +4,18 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
-
 permissions:
   packages: write
   contents: read
-
 env:
   # Commit-specific tag, so the test job pulls exactly the image built in this run
   COMMIT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Extract version
         id: get_version
         run: echo "version=$(tr -d '[:space:]' < version.txt)" >> $GITHUB_OUTPUT
@@ -52,7 +49,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             DIAGRAMS_VERSION=${{ steps.get_version.outputs.version }}
-
   test:
     needs: build
     runs-on: ubuntu-latest
