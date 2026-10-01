@@ -21,7 +21,7 @@ jobs:
         run: echo "version=$(tr -d '[:space:]' < version.txt)" >> $GITHUB_OUTPUT
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v6.2.0
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
         with:
           images: |
             ghcr.io/stv-io/docker-diagrams
